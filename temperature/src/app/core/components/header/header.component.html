@@ -2,15 +2,62 @@
     <mat-sidenav-container class="example-container" (backdropClick)="close('backdrop')">
       <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
         <div class="button-container">
-          <button class="button" mat-button (click)="close('toggle button')"><img src="../../../../assets/close.svg" alt="" class="close"></button>
+          <button class="button" mat-button (click)="close('toggle button')"><img src="../../../../assets/close.svg" alt="close menu" class="close"></button>
         </div>
         <ul class="menu-list">
-          <li class="menu-list__item"><a href="#" class="menu-list__link menu-list__link_active">Брестская область</a></li>
+          <li class="menu-list__item">
+            <a href="#" class="menu-list__link menu-list__link_active">
+              <div class="image-wrapper">
+                <img src="../../../../assets/brest.png" alt="brest region" class="item-image">
+              </div>
+              Брестская область
+            </a>
+          </li>
+          <li class="menu-list__item">
+            <a href="#" class="menu-list__link menu-list__link_active">
+              <div class="image-wrapper">
+                <img src="../../../../assets/Vitebsk.png" alt="vitebsk region" class="item-image">
+              </div>
+              Витебская область
+            </a>
+          </li>
+          <li class="menu-list__item">
+            <a href="#" class="menu-list__link menu-list__link_active">
+              <div class="image-wrapper">
+                <img src="../../../../assets/Homel.png" alt="gomel region" class="item-image">
+              </div>
+              Гомельская область
+            </a>
+          </li>
+          <li class="menu-list__item">
+            <a href="#" class="menu-list__link menu-list__link_active">
+              <div class="image-wrapper">
+                <img src="../../../../assets/grodno.png" alt="grodno region" class="item-image">
+              </div>
+              Гродненская область
+            </a>
+          </li>
+          <li class="menu-list__item">
+            <a href="#" class="menu-list__link menu-list__link_active">
+              <div class="image-wrapper">
+                <img src="../../../../assets/Minsk.png" alt="minsk region" class="item-image">
+              </div>
+              Минская область
+            </a>
+          </li>
+          <li class="menu-list__item">
+            <a href="#" class="menu-list__link menu-list__link_active">
+              <div class="image-wrapper">
+                <img src="../../../../assets/Mohilev.png" alt="mogilev region" class="item-image">
+              </div>
+              Могилевская область
+            </a>
+          </li>
         </ul>
       </mat-sidenav>
       <mat-sidenav-content>
         <button mat-button (click)="sidenav.open()">
-          <img src="../../../../assets/open.svg" alt="" class="open">
+          <img src="../../../../assets/open.svg" alt="open menu" class="open">
         </button>
       </mat-sidenav-content>
     </mat-sidenav-container>
