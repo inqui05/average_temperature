@@ -1,0 +1,17 @@
+<header class="header">
+    <mat-sidenav-container class="example-container" (backdropClick)="close('backdrop')">
+      <mat-sidenav #sidenav (keydown.escape)="close('escape')" disableClose>
+        <div class="button-container">
+          <button class="button" mat-button (click)="close('toggle button')"><img src="../../../../assets/close.svg" alt="" class="close"></button>
+        </div>
+        <ul class="menu-list">
+          <li class="menu-list__item"><a href="#" class="menu-list__link menu-list__link_active">Брестская область</a></li>
+        </ul>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <button mat-button (click)="sidenav.open()">
+          <img src="../../../../assets/open.svg" alt="" class="open">
+        </button>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+</header>
