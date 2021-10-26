@@ -10,7 +10,6 @@ import { MapComponent } from './maps/pages/map.component';
 @NgModule({
   declarations: [
     AppComponent,
-    MapComponent,
   ],
   imports: [
     BrowserModule,
