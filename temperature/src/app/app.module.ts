@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MapComponent } from './maps/pages/map.component';
+import { MapsModule } from './maps/maps.module';
 
 @NgModule({
   declarations: [
@@ -15,6 +15,7 @@ import { MapComponent } from './maps/pages/map.component';
     BrowserModule,
     AppRoutingModule,
     CoreModule,
+    MapsModule,
     BrowserAnimationsModule,
   ],
   providers: [],

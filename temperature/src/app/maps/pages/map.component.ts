@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-map',
@@ -7,7 +7,7 @@ import {FormGroup, FormControl} from '@angular/forms';
   styleUrls: ['./map.component.sass']
 })
 export class MapComponent {
-  range = new FormGroup({
+  public range = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
   });
