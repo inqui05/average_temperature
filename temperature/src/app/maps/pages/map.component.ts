@@ -7,6 +7,8 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./map.component.sass']
 })
 export class MapComponent {
+  public value = 0;
+
   public range = new FormGroup({
     start: new FormControl(),
     end: new FormControl()
