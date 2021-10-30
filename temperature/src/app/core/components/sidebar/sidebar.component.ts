@@ -4,19 +4,16 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { AppDataService } from 'src/app/shared/services/app-data.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.sass']
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.sass']
 })
-export class HeaderComponent {
+export class SidebarComponent {
   @ViewChild('sidenav') sidenav?: MatSidenav;
-
-  reason = '';
 
   constructor(public service: AppDataService) {}
 
-  close(reason: string) {
-    this.reason = reason;
+  close() {
     if(this.sidenav) this.sidenav.close();
   }
 }
