@@ -4,6 +4,7 @@ export const temperature: IRegion[] = [
   {
     name: "Минск",
     icon: '../../../../assets/capital.png',
+    iconAlt: 'Minsk',
     temperature: [
       {
         date: '01.01.2021',
@@ -82,6 +83,7 @@ export const temperature: IRegion[] = [
   {
     name: "Брестская область",
     icon: '../../../../assets/brest.png',
+    iconAlt: 'Brest region',
     temperature: [
       {
         date: '01.01.2021',
@@ -160,6 +162,7 @@ export const temperature: IRegion[] = [
   {
     name: "Витебская область",
     icon: '../../../../assets/Vitebsk.png',
+    iconAlt: 'Vitebsk region',
     temperature: [
       {
         date: '01.01.2021',
@@ -238,6 +241,7 @@ export const temperature: IRegion[] = [
   {
     name: "Гомельская область",
     icon: '../../../../assets/Homel.png',
+    iconAlt: 'Gomel region',
     temperature: [
       {
         date: '01.01.2021',
@@ -316,6 +320,7 @@ export const temperature: IRegion[] = [
   {
     name: "Гродненская область",
     icon: '../../../../assets/grodno.png',
+    iconAlt: 'Grodno region',
     temperature: [
       {
         date: '01.01.2021',
@@ -394,6 +399,7 @@ export const temperature: IRegion[] = [
   {
     name: "Минская область",
     icon: '../../../../assets/Minsk.png',
+    iconAlt: 'Minsk region',
     temperature: [
       {
         date: '01.01.2021',
@@ -472,6 +478,7 @@ export const temperature: IRegion[] = [
   {
     name: "Могилевская область",
     icon: '../../../../assets/Mohilev.png',
+    iconAlt: 'Mogilev region',
     temperature: [
       {
         date: '01.01.2021',

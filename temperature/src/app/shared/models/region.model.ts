@@ -1,6 +1,7 @@
 export interface IRegion {
   name: string,
   icon: string,
+  iconAlt: string,
   temperature: IMonth[],
 }
 

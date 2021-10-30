@@ -4,53 +4,13 @@
         <div class="button-container">
           <button class="button" mat-button (click)="close('toggle button')"><img src="../../../../assets/close.svg" alt="close menu" class="close"></button>
         </div>
-        <ul class="menu-list">
+        <ul class="menu-list" *ngFor="let region of service.regions">
           <li class="menu-list__item">
             <a href="#" class="menu-list__link menu-list__link_active">
               <div class="image-wrapper">
-                <img src="../../../../assets/brest.png" alt="brest region" class="item-image">
+                <img [src]="region.icon" [alt]="region.iconAlt" class="item-image">
               </div>
-              Брестская область
-            </a>
-          </li>
-          <li class="menu-list__item">
-            <a href="#" class="menu-list__link menu-list__link_active">
-              <div class="image-wrapper">
-                <img src="../../../../assets/Vitebsk.png" alt="vitebsk region" class="item-image">
-              </div>
-              Витебская область
-            </a>
-          </li>
-          <li class="menu-list__item">
-            <a href="#" class="menu-list__link menu-list__link_active">
-              <div class="image-wrapper">
-                <img src="../../../../assets/Homel.png" alt="gomel region" class="item-image">
-              </div>
-              Гомельская область
-            </a>
-          </li>
-          <li class="menu-list__item">
-            <a href="#" class="menu-list__link menu-list__link_active">
-              <div class="image-wrapper">
-                <img src="../../../../assets/grodno.png" alt="grodno region" class="item-image">
-              </div>
-              Гродненская область
-            </a>
-          </li>
-          <li class="menu-list__item">
-            <a href="#" class="menu-list__link menu-list__link_active">
-              <div class="image-wrapper">
-                <img src="../../../../assets/Minsk.png" alt="minsk region" class="item-image">
-              </div>
-              Минская область
-            </a>
-          </li>
-          <li class="menu-list__item">
-            <a href="#" class="menu-list__link menu-list__link_active">
-              <div class="image-wrapper">
-                <img src="../../../../assets/Mohilev.png" alt="mogilev region" class="item-image">
-              </div>
-              Могилевская область
+              {{region.name}}
             </a>
           </li>
         </ul>

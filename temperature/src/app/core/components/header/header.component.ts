@@ -1,5 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import {MatSidenav} from '@angular/material/sidenav';
+import { MatSidenav } from '@angular/material/sidenav';
+
+import { AppDataService } from 'src/app/shared/services/app-data.service';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +12,8 @@ export class HeaderComponent {
   @ViewChild('sidenav') sidenav?: MatSidenav;
 
   reason = '';
+
+  constructor(public service: AppDataService) {}
 
   close(reason: string) {
     this.reason = reason;
