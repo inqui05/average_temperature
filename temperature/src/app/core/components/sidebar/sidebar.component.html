@@ -1,5 +1,5 @@
 <header class="header">
-    <mat-sidenav-container class="example-container" (backdropClick)="close()">
+    <mat-sidenav-container class="example-container" (backdropClick)="close()" [style.z-index]="hideElements">
       <mat-sidenav #sidenav (keydown.escape)="close()" disableClose>
         <div class="button-container">
           <button class="button" mat-button (click)="close()"><img src="../../../../assets/close.svg" alt="close menu" class="close"></button>
@@ -16,7 +16,7 @@
         </ul>
       </mat-sidenav>
       <mat-sidenav-content>
-        <button mat-button (click)="sidenav.open()">
+        <button mat-button (click)="open()">
           <img src="../../../../assets/open.svg" alt="open menu" class="open">
         </button>
       </mat-sidenav-content>

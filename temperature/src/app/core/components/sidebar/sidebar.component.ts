@@ -11,9 +11,21 @@ import { AppDataService } from 'src/app/shared/services/app-data.service';
 export class SidebarComponent {
   @ViewChild('sidenav') sidenav?: MatSidenav;
 
+  public hideElements = 4;
+
   constructor(public service: AppDataService) {}
 
   close() {
-    if(this.sidenav) this.sidenav.close();
+    if(this.sidenav) {
+      this.sidenav.close();
+      this.hideElements = 4;
+    }
+  }
+
+  open() {
+    if (this.sidenav) {
+      this.sidenav.open();
+      this.hideElements = 5;
+    }
   }
 }
