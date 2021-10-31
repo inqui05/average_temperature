@@ -3,6 +3,7 @@ export interface IRegion {
   icon: string,
   iconAlt: string,
   temperature: IMonth[],
+  mapSettings?: IMapSettings,
 }
 
 interface IMonth {
@@ -10,4 +11,10 @@ interface IMonth {
   min: number,
   max: number,
   avg: number,
+}
+
+interface IMapSettings {
+  lat: number,
+  lng: number,
+  zoom: number,
 }

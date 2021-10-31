@@ -78,7 +78,12 @@ export const temperature: IRegion[] = [
         max: 11.1,
         avg: -3.4,
       },
-    ]
+    ],
+    mapSettings: {
+      lat: 53.902,
+      lng: 27.553,
+      zoom: 11,
+    }
   },
   {
     name: "Брестская область",
@@ -157,7 +162,12 @@ export const temperature: IRegion[] = [
         max: 13.2,
         avg: -0.3,
       },
-    ]
+    ],
+    mapSettings: {
+      lat: 52.485,
+      lng: 25.482,
+      zoom: 7.8,
+    }
   },
   {
     name: "Витебская область",
@@ -236,7 +246,12 @@ export const temperature: IRegion[] = [
         max: 10.7,
         avg: -4.2,
       },
-    ]
+    ],
+    mapSettings: {
+      lat: 55.2,
+      lng: 28.892,
+      zoom: 7.6,
+    }
   },
   {
     name: "Гомельская область",
@@ -315,7 +330,12 @@ export const temperature: IRegion[] = [
         max: 11.6,
         avg: -3.3,
       },
-    ]
+    ],
+    mapSettings: {
+      lat: 52.216,
+      lng: 29.889,
+      zoom: 7.6,
+    }
   },
   {
     name: "Гродненская область",
@@ -394,7 +414,12 @@ export const temperature: IRegion[] = [
         max: 11.5,
         avg: 0.3,
       },
-    ]
+    ],
+    mapSettings: {
+      lat: 53.882,
+      lng: 25.432,
+      zoom: 7.4,
+    }
   },
   {
     name: "Минская область",
@@ -473,7 +498,12 @@ export const temperature: IRegion[] = [
         max: 11,
         avg: -3.7,
       },
-    ]
+    ],
+    mapSettings: {
+      lat: 53.792,
+      lng: 27.629,
+      zoom: 7.2,
+    }
   },
   {
     name: "Могилевская область",
@@ -552,6 +582,11 @@ export const temperature: IRegion[] = [
         max: 10.9,
         avg: -4.2,
       },
-    ]
+    ],
+    mapSettings: {
+      lat: 53.675,
+      lng: 30.397,
+      zoom: 7.8,
+    }
   },
 ];
