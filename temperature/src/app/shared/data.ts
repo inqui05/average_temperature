@@ -2,6 +2,7 @@ import { IRegion } from './models/region.model';
 
 export const temperature: IRegion[] = [
   {
+    id: 0,
     name: "Минск",
     icon: '../../../../assets/capital.png',
     iconAlt: 'Minsk',
@@ -86,6 +87,7 @@ export const temperature: IRegion[] = [
     }
   },
   {
+    id: 1,
     name: "Брестская область",
     icon: '../../../../assets/brest.png',
     iconAlt: 'Brest region',
@@ -170,6 +172,7 @@ export const temperature: IRegion[] = [
     }
   },
   {
+    id: 2,
     name: "Витебская область",
     icon: '../../../../assets/Vitebsk.png',
     iconAlt: 'Vitebsk region',
@@ -254,6 +257,7 @@ export const temperature: IRegion[] = [
     }
   },
   {
+    id: 3,
     name: "Гомельская область",
     icon: '../../../../assets/Homel.png',
     iconAlt: 'Gomel region',
@@ -338,6 +342,7 @@ export const temperature: IRegion[] = [
     }
   },
   {
+    id: 4,
     name: "Гродненская область",
     icon: '../../../../assets/grodno.png',
     iconAlt: 'Grodno region',
@@ -422,6 +427,7 @@ export const temperature: IRegion[] = [
     }
   },
   {
+    id: 5,
     name: "Минская область",
     icon: '../../../../assets/Minsk.png',
     iconAlt: 'Minsk region',
@@ -506,6 +512,7 @@ export const temperature: IRegion[] = [
     }
   },
   {
+    id: 6,
     name: "Могилевская область",
     icon: '../../../../assets/Mohilev.png',
     iconAlt: 'Mogilev region',

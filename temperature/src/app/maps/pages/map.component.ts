@@ -1,28 +1,42 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { UntilDestroy } from '@ngneat/until-destroy';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { AppDataService } from 'src/app/shared/services/app-data.service';
 import { googleMapsKey } from 'src/environments/environment';
 
+import { IRegion } from '../../shared/models/region.model';
+
+@UntilDestroy({ checkProperties: true })
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.sass']
 })
-export class MapComponent {
-  public apiLoaded: Observable<boolean>;
+export class MapComponent implements OnInit{
+  public regionData: IRegion | null = null;
+
+  public apiLoaded: Observable<boolean> = new Observable();
 
   public value = 0;
 
-  public options: google.maps.MapOptions = {
-    center: { lat: 53.675, lng: 30.397 },
-    zoom: 7.8,
-  };
+  constructor(private route: ActivatedRoute, private httpClient: HttpClient, public service: AppDataService) {}
 
-  constructor(httpClient: HttpClient) {
-    this.apiLoaded = httpClient.jsonp(`https://maps.googleapis.com/maps/api/js?key=${googleMapsKey}`, 'callback')
+  ngOnInit() {
+    this.route.params.subscribe((params) => {
+      console.log(params);
+      if (params.id) {
+        this.regionData = this.service.regions[params.id];
+      } else {
+        this.regionData = this.service.regions[0];
+      }
+    });
+
+    this.apiLoaded = this.httpClient.jsonp(`https://maps.googleapis.com/maps/api/js?key=${googleMapsKey}`, 'callback')
       .pipe(
         map(() => true),
         catchError(() => of(false)),

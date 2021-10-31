@@ -3,6 +3,8 @@ import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from '../shared/material.module';
 import { MapComponent } from './pages/map.component';
@@ -12,6 +14,7 @@ import { MapComponent } from './pages/map.component';
     MapComponent,
   ],
   imports: [
+    BrowserModule,
     CommonModule,
     MaterialModule,
     FormsModule,
@@ -19,9 +22,7 @@ import { MapComponent } from './pages/map.component';
     GoogleMapsModule,
     HttpClientModule,
     HttpClientJsonpModule,
-  ],
-  exports: [
-    MapComponent,
-  ],
+    RouterModule,
+  ]
 })
 export class MapsModule { }

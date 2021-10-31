@@ -23,6 +23,7 @@
     "@angular/platform-browser-dynamic": "~12.1.0",
     "@angular/router": "~12.1.0",
     "@googlemaps/js-api-loader": "^1.12.7",
+    "@ngneat/until-destroy": "^8.1.4",
     "date-fns": "^2.25.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.2.0",

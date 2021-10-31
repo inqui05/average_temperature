@@ -1,9 +1,10 @@
 export interface IRegion {
+  id: number,
   name: string,
   icon: string,
   iconAlt: string,
   temperature: IMonth[],
-  mapSettings?: IMapSettings,
+  mapSettings: IMapSettings,
 }
 
 interface IMonth {

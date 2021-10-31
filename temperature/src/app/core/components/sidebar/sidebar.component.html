@@ -5,8 +5,8 @@
           <button class="button" mat-button (click)="close()"><img src="../../../../assets/close.svg" alt="close menu" class="close"></button>
         </div>
         <ul class="menu-list">
-          <li class="menu-list__item" *ngFor="let region of service.regions">
-            <a href="#" class="menu-list__link menu-list__link_active">
+          <li class="menu-list__item" *ngFor="let region of service.regions"  (click)="close()">
+            <a [routerLink]="['region/', region.id]" class="menu-list__link menu-list__link_active">
               <div class="image-wrapper">
                 <img [src]="region.icon" [alt]="region.iconAlt" class="item-image">
               </div>
