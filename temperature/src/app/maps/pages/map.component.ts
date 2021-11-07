@@ -6,6 +6,7 @@ import { UntilDestroy } from '@ngneat/until-destroy';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { brestRegion } from 'src/app/shared/polygonData';
 import { AppDataService } from 'src/app/shared/services/app-data.service';
 import { googleMapsKey } from 'src/environments/environment';
 
@@ -17,18 +18,17 @@ import { IRegion } from '../../shared/models/region.model';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.sass']
 })
-export class MapComponent implements OnInit{
+export class MapComponent implements OnInit {
   public regionData: IRegion | null = null;
 
   public apiLoaded: Observable<boolean> = new Observable();
 
   public value = 0;
 
-  constructor(private route: ActivatedRoute, private httpClient: HttpClient, public service: AppDataService) {}
+  constructor(private route: ActivatedRoute, private httpClient: HttpClient, public service: AppDataService) { }
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      console.log(params);
       if (params.id) {
         this.regionData = this.service.regions[params.id];
       } else {

@@ -1,4 +1,7 @@
 import { IRegion } from './models/region.model';
+import {
+    brestRegion, gomelRegion, grodnoRegion, minsk, minskRegion, mogilevRegion, vitebskRegion
+} from './polygonData';
 
 export const temperature: IRegion[] = [
   {
@@ -81,10 +84,11 @@ export const temperature: IRegion[] = [
       },
     ],
     mapSettings: {
-      lat: 53.902,
+      lat: 53.881,
       lng: 27.553,
       zoom: 11,
-    }
+    },
+    shape: minsk,
   },
   {
     id: 1,
@@ -168,8 +172,9 @@ export const temperature: IRegion[] = [
     mapSettings: {
       lat: 52.485,
       lng: 25.482,
-      zoom: 7.8,
-    }
+      zoom: 7.7,
+    },
+    shape: brestRegion,
   },
   {
     id: 2,
@@ -254,7 +259,8 @@ export const temperature: IRegion[] = [
       lat: 55.2,
       lng: 28.892,
       zoom: 7.6,
-    }
+    },
+    shape: vitebskRegion,
   },
   {
     id: 3,
@@ -336,10 +342,11 @@ export const temperature: IRegion[] = [
       },
     ],
     mapSettings: {
-      lat: 52.216,
+      lat: 52.22,
       lng: 29.889,
-      zoom: 7.6,
-    }
+      zoom: 7.53,
+    },
+    shape: gomelRegion,
   },
   {
     id: 4,
@@ -424,7 +431,8 @@ export const temperature: IRegion[] = [
       lat: 53.882,
       lng: 25.432,
       zoom: 7.4,
-    }
+    },
+    shape: grodnoRegion,
   },
   {
     id: 5,
@@ -509,7 +517,8 @@ export const temperature: IRegion[] = [
       lat: 53.792,
       lng: 27.629,
       zoom: 7.2,
-    }
+    },
+    shape: minskRegion,
   },
   {
     id: 6,
@@ -591,9 +600,10 @@ export const temperature: IRegion[] = [
       },
     ],
     mapSettings: {
-      lat: 53.675,
+      lat: 53.62,
       lng: 30.397,
       zoom: 7.8,
-    }
+    },
+    shape: mogilevRegion,
   },
 ];

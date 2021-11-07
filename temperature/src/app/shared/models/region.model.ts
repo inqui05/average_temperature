@@ -5,6 +5,7 @@ export interface IRegion {
   iconAlt: string,
   temperature: IMonth[],
   mapSettings: IMapSettings,
+  shape: google.maps.LatLngLiteral[],
 }
 
 interface IMonth {
