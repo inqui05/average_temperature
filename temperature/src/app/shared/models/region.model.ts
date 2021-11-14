@@ -3,9 +3,16 @@ export interface IRegion {
   name: string,
   icon: string,
   iconAlt: string,
-  temperature: IMonth[],
+  temperature: IDayWeather[],
   mapSettings: IMapSettings,
   shape: google.maps.LatLngLiteral[],
+}
+
+export interface IDayWeather {
+  avg: number,
+  min: number,
+  max: number,
+  condition: string,
 }
 
 interface IMonth {

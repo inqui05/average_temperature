@@ -34,7 +34,9 @@ export class MapComponent implements OnInit {
       } else {
         this.regionData = this.service.regions[0];
       }
+      console.log(this.regionData.temperature)
     });
+
 
     this.apiLoaded = this.httpClient.jsonp(`https://maps.googleapis.com/maps/api/js?key=${googleMapsKey}`, 'callback')
       .pipe(
