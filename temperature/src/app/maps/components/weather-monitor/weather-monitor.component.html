@@ -1,5 +1,5 @@
 <div class="value" *ngIf="data; else select">
-  <h3 class="value__title">Данные за: {{data.date | date:'dd/MM'}}</h3>
+  <h3 class="value__title">Данные за: {{data.date | date:'dd MMMM'}}</h3>
   <div class="value__params">
     <p class="value__name">Средняя температура, °C</p>
     <p class="value__number">{{data.avg}}</p>

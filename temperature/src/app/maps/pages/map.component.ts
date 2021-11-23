@@ -36,7 +36,6 @@ export class MapComponent implements OnInit {
       } else {
         this.regionData = this.service.regions[0];
       }
-      //console.log(this.regionData);
     });
 
 
@@ -58,9 +57,5 @@ export class MapComponent implements OnInit {
     } else {
       this.weatherData = null;
     }
-  }
-
-  changeTimePeriod() {
-    console.log('fdfdf');
   }
 }
