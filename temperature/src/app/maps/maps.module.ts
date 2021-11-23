@@ -8,10 +8,12 @@ import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from '../shared/material.module';
 import { MapComponent } from './pages/map.component';
+import { WeatherMonitorComponent } from './components/weather-monitor/weather-monitor.component';
 
 @NgModule({
   declarations: [
     MapComponent,
+    WeatherMonitorComponent,
   ],
   imports: [
     BrowserModule,

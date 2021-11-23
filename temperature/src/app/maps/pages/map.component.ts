@@ -6,11 +6,11 @@ import { UntilDestroy } from '@ngneat/until-destroy';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { brestRegion } from 'src/app/shared/polygonData';
+import { DEFAULT_MONTH, DEFAULT_YEAR } from 'src/app/shared/data';
 import { AppDataService } from 'src/app/shared/services/app-data.service';
 import { googleMapsKey } from 'src/environments/environment';
 
-import { IRegion } from '../../shared/models/region.model';
+import { IDayWeather, IRegion } from '../../shared/models/region.model';
 
 @UntilDestroy({ checkProperties: true })
 @Component({
@@ -19,6 +19,8 @@ import { IRegion } from '../../shared/models/region.model';
   styleUrls: ['./map.component.sass']
 })
 export class MapComponent implements OnInit {
+  public weatherData: IDayWeather | null = null;
+
   public regionData: IRegion | null = null;
 
   public apiLoaded: Observable<boolean> = new Observable();
@@ -34,7 +36,7 @@ export class MapComponent implements OnInit {
       } else {
         this.regionData = this.service.regions[0];
       }
-      console.log(this.regionData.temperature)
+      //console.log(this.regionData);
     });
 
 
@@ -49,4 +51,16 @@ export class MapComponent implements OnInit {
     start: new FormControl(),
     end: new FormControl()
   });
+
+  changeDay() {
+    if (this.value && this.regionData) {
+      this.weatherData = { ...this.regionData.temperature[this.value - 1], date: new Date(DEFAULT_YEAR, DEFAULT_MONTH, this.value) };
+    } else {
+      this.weatherData = null;
+    }
+  }
+
+  changeTimePeriod() {
+    console.log('fdfdf');
+  }
 }

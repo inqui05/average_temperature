@@ -13,6 +13,7 @@ export interface IDayWeather {
   min: number,
   max: number,
   condition: string,
+  date?: Date,
 }
 
 interface IMonth {

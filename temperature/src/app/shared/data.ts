@@ -1,10 +1,10 @@
 import { IDayWeather, IRegion } from './models/region.model';
 import {
-    brestRegion, gomelRegion, grodnoRegion, minsk, minskRegion, mogilevRegion, vitebskRegion
+  brestRegion, gomelRegion, grodnoRegion, minsk, minskRegion, mogilevRegion, vitebskRegion
 } from './polygonData';
 
-const DEFAULT_YEAR = 2021;
-const DEFAULT_MONTH = 0;
+export const DEFAULT_YEAR = 2021;
+export const DEFAULT_MONTH = 0;
 const MIN_COEF = 0.8;
 const MAX_COEF = 1.2;
 const DAYS_PER_YEAR = 365;
@@ -37,11 +37,11 @@ const generateDayWeather = (dayFromNewYear: number): IDayWeather => {
   let condition = generateCondition(curentMonth);
 
   const avg = Math.floor((monthCoef[curentMonth] * (Math.random() * (MAX_COEF - MIN_COEF) + MIN_COEF) * 10)) / 10;
-  const min = Math.floor((avg - Math.random()*Math.abs(avg)) * 10) / 10;
-  const max = Math.floor((avg + Math.random()*Math.abs(avg)) * 10) / 10;
+  const min = Math.floor((avg - Math.random() * Math.abs(avg)) * 10) / 10;
+  const max = Math.floor((avg + Math.random() * Math.abs(avg)) * 10) / 10;
   condition = condition === weatherCondition.RAINY && curentMonth === 11 || curentMonth === 0 || curentMonth === 1 ? 'snowfall' : condition;
 
-  return {avg, min, max, condition};
+  return { avg, min, max, condition };
 }
 
 const generateTemperatureForYear = (): IDayWeather[] => {
