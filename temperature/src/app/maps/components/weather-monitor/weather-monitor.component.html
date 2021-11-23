@@ -1,4 +1,12 @@
 <div class="value" *ngIf="data; else select">
+  <div class="value__condition" [ngSwitch]="data.condition">
+    <img src="../../../../assets/snow.png" alt="cloudy" class="value__image" *ngSwitchCase="'snowfall'">
+    <img src="../../../../assets/cloudy.png" alt="cloudy" class="value__image" *ngSwitchCase="'cloudy'">
+    <img src="../../../../assets/sun.png" alt="sunny" class="value__image" *ngSwitchCase="'sunny'">
+    <img src="../../../../assets/rain.png" alt="rainy" class="value__image" *ngSwitchCase="'rainy'">
+    <img src="../../../../assets/fog.png" alt="rainy" class="value__image" *ngSwitchCase="'foggy'">
+    <ng-template ngSwitchDefault></ng-template>
+  </div>
   <h3 class="value__title">Данные за: {{data.date | date:'dd MMMM'}}</h3>
   <div class="value__params">
     <p class="value__name">Средняя температура, °C</p>
