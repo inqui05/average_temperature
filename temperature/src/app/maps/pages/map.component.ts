@@ -82,8 +82,8 @@ export class MapComponent implements OnInit {
     let min = 100;
     let avg = 0;
 
-    for (let i = 0; i < period; i++) {
-      if (startDaysSinceNY + i > DAYS_PER_YEAR) startDaysSinceNY = startDaysSinceNY - i + 1;
+    for (let i = -1; i < (period - 1); i++) {
+      if ((startDaysSinceNY + i) >= DAYS_PER_YEAR) startDaysSinceNY = - i;
       if (this.regionData) {
         if (this.regionData.temperature[startDaysSinceNY + i].max > max) max = this.regionData.temperature[startDaysSinceNY + i].max;
         if (this.regionData.temperature[startDaysSinceNY + i].min < min) min = this.regionData.temperature[startDaysSinceNY + i].min;
