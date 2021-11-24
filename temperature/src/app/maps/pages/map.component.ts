@@ -6,7 +6,7 @@ import { UntilDestroy } from '@ngneat/until-destroy';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { DEFAULT_MONTH, DEFAULT_YEAR } from 'src/app/shared/data';
+import { DEFAULT_MONTH, DEFAULT_YEAR, MILLISECONDS_IN_DAY, DAYS_PER_YEAR } from 'src/app/shared/data';
 import { AppDataService } from 'src/app/shared/services/app-data.service';
 import { googleMapsKey } from 'src/environments/environment';
 
@@ -36,7 +36,6 @@ export class MapComponent implements OnInit {
       } else {
         this.regionData = this.service.regions[0];
       }
-      //console.log(this.regionData);
     });
 
 
@@ -52,7 +51,7 @@ export class MapComponent implements OnInit {
     end: new FormControl()
   });
 
-  changeDay() {
+  public changeDay(): void {
     if (this.value && this.regionData) {
       this.weatherData = { ...this.regionData.temperature[this.value - 1], date: new Date(DEFAULT_YEAR, DEFAULT_MONTH, this.value) };
     } else {
@@ -60,7 +59,39 @@ export class MapComponent implements OnInit {
     }
   }
 
-  changeTimePeriod() {
-    console.log(this.range.value);
+  public changeTimePeriod(): void {
+    const start = this.range.value.start;
+    const end = this.range.value.end;
+    if (start && end) this.weatherData = this.calculateAvarageData(start, end);
+  }
+
+  private calculateAvarageData(start: Date, end: Date): IDayWeather {
+    const startNewYear = new Date(start.getFullYear(), 0, 1);
+    const endNewYear = new Date(end.getFullYear(), 0, 1);
+    let startDaysSinceNY = (start.getTime() - startNewYear.getTime()) / MILLISECONDS_IN_DAY + 1;
+    const endDaysSinceNY = (end.getTime() - endNewYear.getTime()) / MILLISECONDS_IN_DAY + 1;
+
+    let period = 0;
+    if (endDaysSinceNY > startDaysSinceNY) {
+      period = endDaysSinceNY - startDaysSinceNY + 1;
+    } else {
+      period = DAYS_PER_YEAR - startDaysSinceNY + endDaysSinceNY + 1;
+    }
+
+    let max = -100;
+    let min = 100;
+    let avg = 0;
+
+    for (let i = 0; i < period; i++) {
+      if (startDaysSinceNY + i > DAYS_PER_YEAR) startDaysSinceNY = startDaysSinceNY - i + 1;
+      if (this.regionData) {
+        if (this.regionData.temperature[startDaysSinceNY + i].max > max) max = this.regionData.temperature[startDaysSinceNY + i].max;
+        if (this.regionData.temperature[startDaysSinceNY + i].min < min) min = this.regionData.temperature[startDaysSinceNY + i].min;
+        avg += this.regionData.temperature[startDaysSinceNY + i].avg;
+      }
+    }
+    avg = Math.floor((avg / period) * 10) / 10;
+
+    return { avg, min, max, date: start, end };
   }
 }

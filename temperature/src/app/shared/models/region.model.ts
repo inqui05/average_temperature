@@ -12,15 +12,9 @@ export interface IDayWeather {
   avg: number,
   min: number,
   max: number,
-  condition: string,
+  condition?: string,
   date?: Date,
-}
-
-interface IMonth {
-  date: string,
-  min: number,
-  max: number,
-  avg: number,
+  end?: Date,
 }
 
 interface IMapSettings {

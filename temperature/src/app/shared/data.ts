@@ -5,9 +5,10 @@ import {
 
 export const DEFAULT_YEAR = 2021;
 export const DEFAULT_MONTH = 0;
+export const MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
+export const DAYS_PER_YEAR = 365;
 const MIN_COEF = 0.8;
 const MAX_COEF = 1.2;
-const DAYS_PER_YEAR = 365;
 const WINTER_MONTH = [11, 0, 1];
 
 // average temperature in Minsk by month. Minsk is approximately the central point of country
