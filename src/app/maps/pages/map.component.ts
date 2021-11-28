@@ -6,9 +6,11 @@ import { UntilDestroy } from '@ngneat/until-destroy';
 
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { DEFAULT_MONTH, DEFAULT_YEAR, MILLISECONDS_IN_DAY, DAYS_PER_YEAR } from 'src/app/shared/data';
+import {
+    DAYS_PER_YEAR, DEFAULT_MONTH, DEFAULT_YEAR, MILLISECONDS_IN_DAY
+} from 'src/app/shared/data';
 import { AppDataService } from 'src/app/shared/services/app-data.service';
-import { googleMapsKey } from 'src/environments/environment';
+import { environment } from 'src/environments/environment';
 
 import { IDayWeather, IRegion } from '../../shared/models/region.model';
 
@@ -39,7 +41,7 @@ export class MapComponent implements OnInit {
     });
 
 
-    this.apiLoaded = this.httpClient.jsonp(`https://maps.googleapis.com/maps/api/js?key=${googleMapsKey}`, 'callback')
+    this.apiLoaded = this.httpClient.jsonp(`https://maps.googleapis.com/maps/api/js?key=${environment.googleMapsKey}`, 'callback')
       .pipe(
         map(() => true),
         catchError(() => of(false)),
