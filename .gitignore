@@ -106,3 +106,4 @@ dist
 # Angular environment variables
 environment.prod.ts
 environment.ts
+environments/
