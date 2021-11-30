@@ -38,6 +38,7 @@ export class MapComponent implements OnInit {
       } else {
         this.regionData = this.service.regions[0];
       }
+      this.service.currentRegion = this.regionData.name;
     });
 
 

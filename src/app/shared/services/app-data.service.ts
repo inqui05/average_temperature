@@ -8,4 +8,6 @@ import { IRegion } from '../models/region.model';
 })
 export class AppDataService {
   public regions: IRegion[] = temperature;
+
+  public currentRegion = 'Минск';
 }
