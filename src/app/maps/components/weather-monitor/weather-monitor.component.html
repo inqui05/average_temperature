@@ -10,16 +10,22 @@
   <h3 class="value__title" *ngIf="!data.end">Данные за: {{data.date | date:'dd MMMM'}}</h3>
   <h3 class="value__title" *ngIf="data.end">Данные за: {{data.date | date:'dd/MM'}} - {{data.end | date:'dd/MM'}}</h3>
   <div class="value__params">
-    <p class="value__name">Температура днем, °C</p>
+    <p class="value__name" *ngIf="!data.end">Температура днем, °C</p>
+    <p class="value__name" *ngIf="data.end">Ср. температура днем, °C</p>
     <p class="value__number">{{data.day}}</p>
   </div>
   <div class="value__params">
-    <p class="value__name">Температура ночью, °C</p>
+    <p class="value__name" *ngIf="!data.end">Температура ночью, °C</p>
+    <p class="value__name" *ngIf="data.end">Ср. температура ночью, °C</p>
     <p class="value__number">{{data.night}}</p>
   </div>
-  <div class="value__params">
+  <div class="value__params" *ngIf="data.windSpeed">
     <p class="value__name">Скорость ветра, м/с</p>
     <p class="value__number">{{data.windSpeed}}</p>
+  </div>
+  <div class="value__params" *ngIf="data.avg">
+    <p class="value__name">Средняя температура, °C</p>
+    <p class="value__number">{{data.avg}}</p>
   </div>
 </div>
 <ng-template #select>

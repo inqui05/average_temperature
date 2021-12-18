@@ -3,19 +3,6 @@ import {
     brestRegion, gomelRegion, grodnoRegion, minsk, minskRegion, mogilevRegion, vitebskRegion
 } from './polygonData';
 
-export const DEFAULT_YEAR = 2021;
-export const DEFAULT_MONTH = 0;
-export const MILLISECONDS_IN_DAY = 1000 * 60 * 60 * 24;
-export const DAYS_PER_YEAR = 365;
-
-enum weatherCondition {
-  CLOUDY = 'cloudy',
-  SUNNY = 'sunny',
-  RAINY = 'rainy',
-  FOGGY = 'foggy',
-  SNOWFALL = 'snowfall',
-}
-
 export const temperature: IRegion[] = [
   {
     id: 0,

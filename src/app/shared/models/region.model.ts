@@ -10,10 +10,11 @@ export interface IRegion {
 export interface IDayWeather {
   day: number,
   night: number,
-  windSpeed: number,
+  windSpeed?: number,
   condition?: string,
   date?: Date,
   end?: Date,
+  avg?: number,
 }
 
 interface IMapSettings {

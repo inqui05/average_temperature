@@ -7,9 +7,6 @@ import { UntilDestroy } from '@ngneat/until-destroy';
 import { eachDayOfInterval } from 'date-fns';
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import {
-    DAYS_PER_YEAR, DEFAULT_MONTH, DEFAULT_YEAR, MILLISECONDS_IN_DAY
-} from 'src/app/shared/data';
 import { AppDataService } from 'src/app/shared/services/app-data.service';
 import { environment } from 'src/environments/environment';
 
@@ -17,6 +14,9 @@ import { IDayWeather, IRegion, IWeatherData } from '../../shared/models/region.m
 
 const MILLISECONDS_IN_SECOND = 1000;
 const FORECAST_FOR_DAYS = 7;
+const TIMES_OF_DAY = 4;
+const TIME_IN_API_ANSWER = 13;
+
 
 @UntilDestroy({ checkProperties: true })
 @Component({
@@ -82,39 +82,33 @@ export class MapComponent implements OnInit {
     }
   }
 
-/*   public changeTimePeriod(): void {
+  public changeTimePeriod(): void {
     const start = this.range.value.start;
     const end = this.range.value.end;
     if (start && end) this.weatherData = this.calculateAvarageData(start, end);
-  } */
+  }
 
-  /* private calculateAvarageData(start: Date, end: Date): IDayWeather {
-    const startNewYear = new Date(start.getFullYear(), 0, 1);
-    const endNewYear = new Date(end.getFullYear(), 0, 1);
-    let startDaysSinceNY = (start.getTime() - startNewYear.getTime()) / MILLISECONDS_IN_DAY + 1;
-    const endDaysSinceNY = (end.getTime() - endNewYear.getTime()) / MILLISECONDS_IN_DAY + 1;
+  private calculateAvarageData(start: Date, end: Date): IDayWeather {
+    const period = eachDayOfInterval({ start, end });
 
-    let period = 0;
-    if (endDaysSinceNY > startDaysSinceNY) {
-      period = endDaysSinceNY - startDaysSinceNY + 1;
-    } else {
-      period = DAYS_PER_YEAR - startDaysSinceNY + endDaysSinceNY + 1;
-    }
-
-    let max = -100;
-    let min = 100;
+    let max= -100;
+    let min= +100;
     let avg = 0;
 
-    for (let i = -1; i < (period - 1); i++) {
-      if ((startDaysSinceNY + i) >= DAYS_PER_YEAR) startDaysSinceNY = - i;
+    period.forEach((item) => {
+      const newTime = item.setHours(TIME_IN_API_ANSWER) / MILLISECONDS_IN_SECOND;
       if (this.regionData) {
-        if (this.regionData.temperature[startDaysSinceNY + i].max > max) max = this.regionData.temperature[startDaysSinceNY + i].max;
-        if (this.regionData.temperature[startDaysSinceNY + i].min < min) min = this.regionData.temperature[startDaysSinceNY + i].min;
-        avg += this.regionData.temperature[startDaysSinceNY + i].avg;
-      }
-    }
-    avg = Math.floor((avg / period) * 10) / 10;
+        const day = this.regionData.daily.find((data) => data.dt === newTime);
 
-    return { avg, min, max, date: start, end };
-  } */
+        if(day) {
+          if (day.temp.day > max) max = day.temp.day;
+          if (day.temp.night < min) min = day.temp.night;
+          avg = day.temp.day + day.temp.night + day.temp.morn + day.temp.eve;
+        }
+      }
+    });
+    avg = Math.floor((avg / (period.length * TIMES_OF_DAY)) * 10) / 10;
+
+    return { avg, night: min, day: max, date: start, end };
+  }
 }
