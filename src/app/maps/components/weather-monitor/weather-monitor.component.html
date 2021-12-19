@@ -25,7 +25,7 @@
   </div>
   <div class="value__params" *ngIf="data.avg">
     <p class="value__name">Средняя температура, °C</p>
-    <p class="value__number">{{data.avg}}</p>
+    <p class="value__number">{{data.avg | number:'1.1-2'}}</p>
   </div>
 </div>
 <ng-template #select>

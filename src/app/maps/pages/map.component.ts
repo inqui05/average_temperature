@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MapInfoWindow } from '@angular/google-maps';
 import { ActivatedRoute } from '@angular/router';
 import { UntilDestroy } from '@ngneat/until-destroy';
 
@@ -10,7 +11,9 @@ import { catchError, map } from 'rxjs/operators';
 import { AppDataService } from 'src/app/shared/services/app-data.service';
 import { environment } from 'src/environments/environment';
 
-import { IDayWeather, IRegion, IWeatherData } from '../../shared/models/region.model';
+import {
+    IDailyWeather, IDayWeather, IRegion, IWeatherData
+} from '../../shared/models/region.model';
 
 const MILLISECONDS_IN_SECOND = 1000;
 const FORECAST_FOR_DAYS = 7;
@@ -25,11 +28,15 @@ const TIME_IN_API_ANSWER = 13;
   styleUrls: ['./map.component.sass']
 })
 export class MapComponent implements OnInit {
+  @ViewChild(MapInfoWindow) infoWindow?: MapInfoWindow;
+
   public weatherData: IDayWeather | null = null;
 
   public regionInfo: IRegion | null = null;
 
   public regionData: IWeatherData | null = null;
+
+  public forecast: IDailyWeather | null = null;
 
   public apiLoaded: Observable<boolean> = new Observable();
 
@@ -70,19 +77,23 @@ export class MapComponent implements OnInit {
   });
 
   public changeDay(): void {
+    this.openInfoWindow();
+
     if (this.regionData) {
-      const todayWeather = this.regionData.daily[this.value];
+      this.forecast = this.regionData.daily[this.value];
       this.weatherData = {
-        day: todayWeather.temp.day,
-        night: todayWeather.temp.night,
-        windSpeed: todayWeather.wind_speed,
-        condition: todayWeather.weather[0].main,
-        date: new Date(todayWeather.dt * MILLISECONDS_IN_SECOND),
+        day: this.forecast.temp.day,
+        night: this.forecast.temp.night,
+        windSpeed: this.forecast.wind_speed,
+        condition: this.forecast.weather[0].main,
+        date: new Date(this.forecast.dt * MILLISECONDS_IN_SECOND),
       };
     }
   }
 
   public changeTimePeriod(): void {
+    if (this.infoWindow) this.infoWindow.close();
+
     const start = this.range.value.start;
     const end = this.range.value.end;
     if (start && end) this.weatherData = this.calculateAvarageData(start, end);
@@ -91,6 +102,7 @@ export class MapComponent implements OnInit {
   private calculateAvarageData(start: Date, end: Date): IDayWeather {
     const period = eachDayOfInterval({ start, end });
 
+    //set imposible initial value for min/max temperature
     let max= -100;
     let min= +100;
     let avg = 0;
@@ -107,8 +119,12 @@ export class MapComponent implements OnInit {
         }
       }
     });
-    avg = Math.floor((avg / (period.length * TIMES_OF_DAY)) * 10) / 10;
+    avg = avg / (period.length * TIMES_OF_DAY);
 
     return { avg, night: min, day: max, date: start, end };
+  }
+
+  private openInfoWindow() {
+    if (this.infoWindow) this.infoWindow.open();
   }
 }

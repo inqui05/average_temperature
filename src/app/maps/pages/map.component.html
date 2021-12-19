@@ -26,6 +26,16 @@
         [center]='{lat: regionInfo.mapSettings.lat, lng: regionInfo.mapSettings.lng}'>
         <map-polygon [paths]="regionInfo.shape" strokeColor="#ff0000" strokeOpacity="0.8" strokeWeight="3"
           fillColor="#ff0000" fillOpacity="0.35"></map-polygon>
+        <map-info-window [position]='{lat: regionInfo.mapSettings.lat, lng: regionInfo.mapSettings.lng}' *ngIf="forecast">
+          <div class="now">
+            <h4 *ngIf="weatherData">Прогноз на: {{weatherData.date | date:'dd/MM/YYYY'}}:</h4>
+            <p class="now__string">Ср. температура днем {{forecast.temp.day}} °C</p>
+            <p class="now__string">Ср. температура ночью {{forecast.temp.night}} °C</p>
+            <p class="now__string">Скорость ветра {{forecast.wind_speed}} м/с</p>
+            <p class="now__string">Давление {{forecast.pressure}} мм рт. ст.</p>
+            <p class="now__string">Влажность {{forecast.humidity}} %</p>
+          </div>
+        </map-info-window>
       </google-map>
     </div>
   </div>

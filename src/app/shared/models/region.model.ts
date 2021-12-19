@@ -54,7 +54,7 @@ interface ICurrentWeather {
   main: string,
 }
 
-interface IDailyWeather {
+export interface IDailyWeather {
   day: number,
   dew_point: number,
   dt: number,
